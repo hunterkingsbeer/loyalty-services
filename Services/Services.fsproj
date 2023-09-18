@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+        <Compile Include="DynamoCore.fs"/>
+        <Compile Include="S3Core.fs" />
+        <Compile Include="Common.fs" />
+        <Compile Include="Organization\Types.fs"/>
+        <Compile Include="Organization\Dynamo.fs"/>
+        <Compile Include="Organization\S3.fs"/>
+        <Compile Include="Organization\OrganizationService.fs"/>
+        <Compile Include="Employee\Types.fs" />
+        <Compile Include="Employee\Dynamo.fs" />
+        <Compile Include="Employee\S3.fs" />
+        <Compile Include="Employee\EmployeeService.fs" />
+        <Compile Include="Account\Types.fs" />
+        <Compile Include="Account\Dynamo.fs" />
+        <Compile Include="Account\AccountService.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AWSSDK.S3" Version="3.7.204" />
+        <PackageReference Include="FSharp.AWS.DynamoDB" Version="0.11.2-beta"/>
+        <PackageReference Include="FsToolkit.ErrorHandling" Version="4.9.0" />
+    </ItemGroup>
+
+
+</Project>

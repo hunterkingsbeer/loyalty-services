@@ -1,0 +1,31 @@
+﻿{
+  "profiles": {
+    "LoyaltyServices [LOCAL]": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchUrl": "graphql",
+      "applicationUrl": "https://192.168.86.90:5112",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "LoyaltyServices [ONLINE]": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5112",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "Docker": {
+      "commandName": "Project",
+      "dotnetRunMessages": "true",
+      "launchBrowser": true,
+      "launchUrl": "graphql",
+      "applicationUrl": "http://+:5112",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      }
+    }
+  }
+}
