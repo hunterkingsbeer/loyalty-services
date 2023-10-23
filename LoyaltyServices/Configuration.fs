@@ -2,6 +2,7 @@ module LoyaltyServices.Configuration
 
 open LoyaltyServices.GraphQL
 open LoyaltyServices.GraphQL.AccountQueries
+open LoyaltyServices.GraphQL.BookingQueries
 open LoyaltyServices.GraphQL.EmployeeQueries
 open LoyaltyServices.GraphQL.OrganizationQueries
 
@@ -37,11 +38,16 @@ type Startup() =
 
             .AddQueryType()
             .AddType<OrganizationQueries>()
-            .AddType<AccountQueries>()
             .AddType<OrganizationExtensions>()
+            
+            .AddType<AccountQueries>()
+            .AddType<AccountMutations>()
+            
+            .AddType<BookingQueries>()
+            .AddType<BookingMutations>()
 
             .AddMutationType()
-            .AddType<AccountMutations>()
+            
         |> ignore
 
     member this.Configure(app: IApplicationBuilder, env: IWebHostEnvironment) =

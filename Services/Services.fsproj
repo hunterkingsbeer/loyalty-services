@@ -21,6 +21,9 @@
         <Compile Include="Account\Types.fs" />
         <Compile Include="Account\Dynamo.fs" />
         <Compile Include="Account\AccountService.fs" />
+        <Compile Include="Booking\Types.fs" />
+        <Compile Include="Booking\Dynamo.fs" />
+        <Compile Include="Booking\BookingService.fs" />
     </ItemGroup>
 
     <ItemGroup>

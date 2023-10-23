@@ -6,6 +6,15 @@ open Services.Organization.Types
 
 [<RequireQualifiedAccess>]
 module GraphQlTypes =
+    [<GraphQLName(nameof (Booking))>]
+    type Booking =
+        { AccountUsername: string
+          OrganizationUsername: string
+          Title: string
+          Description: string
+          DateCreated: DateTime
+          DateBooked: DateTime }
+        
     [<GraphQLName(nameof (Organization))>]
     type Organization =
         { Username: string

@@ -9,6 +9,7 @@
         <Compile Include="GraphQL\OrganizationQueries.fs" />
         <Compile Include="GraphQL\EmployeeQueries.fs" />
         <Compile Include="GraphQL\AccountQueries.fs" />
+        <Compile Include="GraphQL\BookingQueries.fs" />
         <Compile Include="Configuration.fs"/>
         <Compile Include="Program.fs"/>
     </ItemGroup>
