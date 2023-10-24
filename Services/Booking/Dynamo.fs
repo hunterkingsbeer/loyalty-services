@@ -17,8 +17,8 @@ module internal Dynamo =
     let private DateBookedSortKey = "dateBooked"
 
     let private toBookingSort (orgUser: String) (dateBooked: DateTime) =
-        let dateBooked = dateBooked.ToString("u")
-        $"{BookingSortKey}#{orgUser}/{DateBookedSortKey}#{dateBooked}"
+        let date = dateBooked.ToString("u")
+        $"{BookingSortKey}#{orgUser}/{DateBookedSortKey}#{date}"
 
     type private BookingItem =
         { [<HashKey>]
@@ -61,11 +61,11 @@ module internal Dynamo =
     let createBooking
         (AccountUsername accountUsername)
         (OrganizationUsername organizationUsername)
-        (bookingDate: DateTime)
+        (dateBooked: DateTime)
         title
         description
         =
-        let sort = toBookingSort (organizationUsername.ToLower()) bookingDate
+        let sort = toBookingSort (organizationUsername.ToLower()) dateBooked
         
         let bookingItem: BookingItem =
             { key = accountUsername.ToLower() // Username
@@ -91,3 +91,13 @@ module internal Dynamo =
 
         |> List.ofArray
         |> List.map itemToBooking
+        
+    let deleteBooking (AccountUsername username) (OrganizationUsername orgUser) (bookingDate: DateTime) =
+        let sort = toBookingSort orgUser bookingDate
+        let key = TableKey.Combined(username, sort)
+        
+        let result = bookingTable.DeleteItem key
+        match result with
+        | Some _ -> true
+        | None -> false 
+        

@@ -8,3 +8,6 @@ module BookingService =
     
     let createBooking accountUsername organizationUsername bookingDate title description =
         Dynamo.createBooking accountUsername organizationUsername bookingDate title description
+
+    let deleteBooking accountUsername organizationUsername bookingDate =
+        Dynamo.deleteBooking accountUsername organizationUsername bookingDate

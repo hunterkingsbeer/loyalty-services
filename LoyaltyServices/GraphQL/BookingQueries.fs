@@ -1,6 +1,7 @@
 namespace LoyaltyServices.GraphQL
 
 open System
+open System.Globalization
 open HotChocolate
 open HotChocolate.Types
 
@@ -37,7 +38,8 @@ module BookingQueries =
             | None -> raise (GraphQLException "BOOKING_NOT_FOUND")
 
         member this.getUsersBookings accountUsername =
-            BookingService.getUsersBookings (AccountUsername accountUsername) |> List.map toBooking
+            BookingService.getUsersBookings (AccountUsername accountUsername)
+            |> List.map toBooking
 
     [<ExtendObjectType("Mutation")>]
     type BookingMutations() =
@@ -49,7 +51,14 @@ module BookingQueries =
                     (DateTime.Parse bookingDate)
                     title
                     description
-            
+
             match result with
             | Some _ -> true
-            | None -> false 
+            | None -> false
+
+        member this.deleteBooking accountUsername organizationUsername (bookingDate: string) =
+            let date = DateTime.Parse(bookingDate, CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal)
+            BookingService.deleteBooking
+                (AccountUsername accountUsername)
+                (OrganizationUsername organizationUsername)
+                date
