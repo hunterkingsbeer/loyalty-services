@@ -60,7 +60,7 @@ module internal Dynamo =
                   firstName = account.FirstName.ToLower()
                   lastName = account.LastName.ToLower()
                   email = account.Email.ToLower()
-                  birthday = account.Birthday.ToString()
+                  birthday = account.Birthday.ToString("u")
                   loyalties = Set.empty }
 
             try

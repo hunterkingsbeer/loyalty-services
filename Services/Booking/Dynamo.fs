@@ -17,7 +17,8 @@ module internal Dynamo =
     let private DateBookedSortKey = "dateBooked"
 
     let private toBookingSort (orgUser: String) (dateBooked: DateTime) =
-        $"{BookingSortKey}#{orgUser}/{DateBookedSortKey}#{dateBooked.ToString()}"
+        let dateBooked = dateBooked.ToString("u")
+        $"{BookingSortKey}#{orgUser}/{DateBookedSortKey}#{dateBooked}"
 
     type private BookingItem =
         { [<HashKey>]
@@ -72,7 +73,7 @@ module internal Dynamo =
 
               title = title
               description = description
-              dateCreated = DateTime.Now.ToString() }
+              dateCreated = DateTime.UtcNow.ToString("u") }
 
         try
             let _ = bookingTable.PutItem(bookingItem)

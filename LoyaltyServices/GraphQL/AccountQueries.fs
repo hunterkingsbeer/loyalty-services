@@ -44,9 +44,8 @@ module AccountQueries =
                   Email = input.Email
                   FirstName = input.FirstName
                   LastName = input.LastName
-                  Birthday = DateTime.Now
+                  Birthday = DateTime.UtcNow
                   Loyalties = [] }
-                
             
             match AccountService.createAccount account with
             | Some username -> username
